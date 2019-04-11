@@ -9,55 +9,57 @@ $(document).ready(function () {
         $("#userChoice").remove();
         $("#result").remove();
 
-        var userChoice = $(this);
+        var userChoice = $(this).attr("id");
         var computerChoice = Math.round(Math.random() * 2);
 
 
         getUserChoice(userChoice);
 
-        if (computerChoice == 0) {
-            computerChoice = "pierre";
+        /*  if (computerChoice == 0) {
+              computerChoice = "pierre";
+  
+          }
+          else if (computerChoice == 1) {
+              computerChoice = "feuille";
+  
+          }
+          else if (computerChoice == 2) {
+              computerChoice = "ciseaux";
+  
+          }
+  
+          $(".images").append("<div id=computerChoice> Choix du computer : " + computerChoice + "</div>");
+          console.log("Choix de l'ordi : " + computerChoice);*/
 
-        }
-        else if (computerChoice == 1) {
-            computerChoice = "feuille";
-
-        }
-        else if (computerChoice == 2) {
-            computerChoice = "ciseaux";
-
-        }
-
+        computerChoice = getComputerChoice(computerChoice);
         $(".images").append("<div id=computerChoice> Choix du computer : " + computerChoice + "</div>");
         console.log("Choix de l'ordi : " + computerChoice);
-
-        determineWinner(userChoice.attr("id"), computerChoice);
+        determineWinner(userChoice, computerChoice);
 
 
     })
 
     function getUserChoice(userChoice) {
 
-        console.log("Vous avez choisi: " + userChoice.attr('id'));
-        $(".images").append("<div id=userChoice> Vous avez choisi : " + userChoice.attr("id") + "</div>");
+        console.log("Vous avez choisi: " + userChoice);
+        $(".images").append("<div id=userChoice> Vous avez choisi : " + userChoice + "</div>");
     }
 
     function getComputerChoice(computerChoice) {
 
         if (computerChoice == 0) {
-            computerChoice = "pierre";
+            return "pierre";
 
         }
         else if (computerChoice == 1) {
-            computerChoice = "feuille";
+            return "feuille";
 
         }
         else if (computerChoice == 2) {
-            computerChoice = "ciseaux";
+            return "ciseaux";
 
         }
-        $(".images").append("<div id=computerChoice> Choix du computer : " + computerChoice + "</div>");
-        console.log("Choix de l'ordi : " + computerChoice);
+
     }
 
 
