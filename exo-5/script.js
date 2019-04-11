@@ -34,6 +34,7 @@ $(document).ready(function () {
         computerChoice = getComputerChoice(computerChoice);
         $(".images").append("<div id=computerChoice> Choix du computer : " + computerChoice + "</div>");
         console.log("Choix de l'ordi : " + computerChoice);
+        
         determineWinner(userChoice, computerChoice);
 
 
