@@ -6,13 +6,23 @@ $(document).ready(function () {
         // alert("Vous avez cliqué sur le bouton 'Se connecter'");
 
         $(".alert-warning").remove();
+        $("Please enter valid email").remove();
 
-        var email = $("#email").val();
+        var emailUser = $("#email").val();
         var password = $("#password").val();
-        console.log(email);
+       
+  
+        console.log(emailUser);
         console.log(password);
+       
+        if (password.length<6) {
+            let $div = $("<div>");
+            $div.addClass("alert alert-warning");
+            $("form").prepend($div);
+            $div.text("Password minimum 6 characters");
+        }
 
-        if ($("#email").val() === "" && $("#password").val() === "") {
+        if (emailUser === "" && $("#password").val() === "") {
             let $div = $("<div>");
             $div.addClass("alert alert-warning");
             $("form").prepend($div);
@@ -20,19 +30,33 @@ $(document).ready(function () {
 
         }
 
-        if ($("#email").val() === "hello@me.com" && $("#password").val() === "secret8") {
+        if (emailUser === "hello@me.com" && $("#password").val() === "secret8") {
             let $div = $("<div>");
             $div.addClass("alert alert-warning");
             $("form").append($div);
             $div.text("Vous êtes connecté").css("color", "green");
 
         }
-        if ($("#email").val() !== "hello@me.com" && $("#password").val() !== "secret8") {
+        if (emailUser !== "hello@me.com" && $("#password").val() !== "secret8") {
             let $div = $("<div>");
             $div.addClass("alert alert-warning");
             $("form").append($div);
             $div.text("Mauvais email ou password").css("color", "red");
         }
+        
+
+        $('#email').focusout(function () {
+
+            $('#email').filter(function () {
+                var  emailUser = $('#email').val();
+                let emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                if (!emailReg.test( emailUser)) {
+                    alert("Please enter valid email");
+                }
+            })
+        });
+
+      
 
     });
 
